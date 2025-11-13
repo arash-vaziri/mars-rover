@@ -1,5 +1,5 @@
 
-module.exports.readInput = () => {
+module.exports.readInput = async() => {
 
     let input = '';
     
@@ -7,9 +7,10 @@ module.exports.readInput = () => {
       input += chunk;
     });
     
-    process.stdin.on('end', () => {
-      //<-- console.log('File content received:');
-      return input;
+    return new Promise((resolve) => {
+        process.stdin.on('end', () => {
+            resolve(input);
+        });
     });
 
 }

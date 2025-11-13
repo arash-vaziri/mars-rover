@@ -1,8 +1,22 @@
 const { readInput }   = require('./readInput.js');
+const { parseInput }  = require('./parseInput.js');
+const { moveRovers }  = require('./moveRovers.js');
 
 
+const main = async() => {
 
-const incoming = readInput();
-if (!incoming) {
-    console.error('No input received. This version requires input via file.');
+
+    const incoming = await readInput();
+    if (!incoming) {
+        console.error('No input received. This version requires input via file.');
+    }
+    
+    const { zone , rovers  } = parseInput(incoming);
+
+    const output = moveRovers(zone, rovers);
+
+    console.log(output);
 }
+
+
+main();
