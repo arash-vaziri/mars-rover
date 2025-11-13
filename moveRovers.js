@@ -54,13 +54,13 @@ module.exports.moveRovers = (zone, rovers , trace = false) => {
                 case 'L':
                     dirIdx = dirIdx - 1 >= 0 
                                         ? (dirIdx - 1) 
-                                        : directions.length - 1 ; 
+                                        :  3; //<- directions.length - 1
 
                     dir = directions[dirIdx];
                     break;
 
                 case 'R':
-                    dirIdx = (dirIdx + 1) < directions.length -1 
+                    dirIdx = (dirIdx + 1) <= 3 //<- directions.length -1 
                                           ? dirIdx+1 
                                           : 0; 
                     dir = directions[dirIdx];
