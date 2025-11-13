@@ -1,0 +1,1 @@
+console.log('Rover is operational.');
