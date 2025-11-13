@@ -32,7 +32,7 @@ const engine = (x , y , direction , zone) => {
 }
 
 
-module.exports.moveRovers = (zone, rovers) => {
+module.exports.moveRovers = (zone, rovers , trace = false) => {
 
     const directions = ['N', 'E', 'S', 'W'];
 
@@ -52,7 +52,10 @@ module.exports.moveRovers = (zone, rovers) => {
 
                 //<-- change the directions
                 case 'L':
-                    dirIdx = dirIdx - 1 ?? directions.length - 1; 
+                    dirIdx = dirIdx - 1 >= 0 
+                                        ? (dirIdx - 1) 
+                                        : directions.length - 1 ; 
+
                     dir = directions[dirIdx];
                     break;
 
@@ -72,8 +75,15 @@ module.exports.moveRovers = (zone, rovers) => {
                     y = result.y;
                     break;
                        
-            } 
+            }
+            
+            if (trace) 
+                console.log(`Rover ${rover.name} moved ${move} to position ${x} ${y} ${dir}`);
+            
         }
+
+        if (trace)
+            console.log(`\n`); //<-- make space for more readability
 
         output.push(`${rover.name} : ${x} ${y} ${dir}`);
 

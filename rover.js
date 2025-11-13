@@ -13,7 +13,7 @@ const main = async() => {
     
     const { zone , rovers  } = parseInput(incoming);
 
-    const output = moveRovers(zone, rovers);
+    const output = moveRovers(zone, rovers , true);
 
     console.log(output);
 }
