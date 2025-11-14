@@ -1,8 +1,18 @@
+const readline = require("readline");
 
-module.exports.readInput = async() => {
+const interactive = async() => {
 
     let input = '';
+    console.log('Interactive Mode');
+
+    return input;
+
+
+}
+
+const fromFile = async() => {
     
+    let input = '';
     process.stdin.on('data', chunk => {
       input += chunk;
     });
@@ -13,5 +23,20 @@ module.exports.readInput = async() => {
         });
     });
 
+}
+
+
+
+
+module.exports.readInput = async() => {
+
+    let input = '';
+    
+    if (process.stdin.isTTY) 
+        input = await interactive();
+    else 
+        input = await fromFile();
+
+    return input;
 }
 

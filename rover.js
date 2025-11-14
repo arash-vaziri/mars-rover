@@ -8,7 +8,8 @@ const main = async() => {
 
     const incoming = await readInput();
     if (!incoming) {
-        console.error('No input received. This version requires input via file.');
+        console.error('No input received.');
+        return;
     }
     
     const { zone , rovers  } = parseInput(incoming);
